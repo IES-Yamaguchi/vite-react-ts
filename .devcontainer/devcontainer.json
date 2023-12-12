@@ -1,0 +1,74 @@
+{
+	"name": "Template",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspace",
+	"remoteEnv": {
+		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+			"version": "latest",
+			"enableNonRootDocker": "true",
+			"moby": "true"
+		},
+		"ghcr.io/devcontainers-contrib/features/npm-package:1": {},
+		"ghcr.io/devcontainers-contrib/features/ts-node:1": {},
+		"ghcr.io/devcontainers-community/npm-features/typescript:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"editor.formatOnSave": true,
+				"editor.defaultFormatter": "esbenp.prettier-vscode",
+				"files.autoSave": "onFocusChange",
+				"debug.inlineValues": "on",
+				"debug.openDebug": "openOnSessionStart",
+				"debug.internalConsoleOptions": "openOnSessionStart",
+				"editor.dragAndDrop": false,
+				"editor.renderWhitespace": "all",
+				"editor.showFoldingControls": "always",
+				"editor.minimap.maxColumn": 40,
+				"editor.minimap.showSlider": "always",
+				"editor.minimap.size": "fit",
+				"editor.formatOnPaste": true,
+				"files.insertFinalNewline": true,
+				"files.eol": "\n",
+				"files.exclude": {
+					"**/.git": true,
+					"**/.svn": true,
+					"**/.hg": true,
+					"**/CVS": true,
+					"**/.DS_Store": true,
+					"**/Thumbs.db": true,
+					"**/node_modules": true
+				},
+				"files.watcherExclude": {
+					"**/.git/objects/**": true,
+					"**/.git/subtree-cache/**": true,
+					"**/node_modules/*/**": true,
+					"**/.hg/store/**": true
+				},
+				"search.exclude": {
+					"**/node_modules": true,
+					"**/bower_components": true,
+					"**/*.code-search": true
+				},
+				"workbench.iconTheme": "material-icon-theme"
+			},
+			"extensions": [
+				"infeng.vscode-react-typescript",
+				"christian-kohler.npm-intellisense",
+				"dsznajder.es7-react-js-snippets",
+				"esbenp.prettier-vscode",
+				"dbaeumer.vscode-eslint",
+				"PKief.material-icon-theme",
+				"MS-CEINTL.vscode-language-pack-ja",
+				"formulahendry.auto-rename-tag",
+				"formulahendry.auto-close-tag"
+			]
+		}
+	},
+	"onCreateCommand": "npm install -g npm@latest && npm i",
+	"remoteUser": "root"
+}
