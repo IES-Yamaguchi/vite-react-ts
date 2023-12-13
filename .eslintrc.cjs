@@ -32,6 +32,7 @@ module.exports = {
 		'@typescript-eslint/no-use-before-define': ['error'],
 		'react/jsx-filename-extension': 'off',
 		'react/jsx-one-expression-per-line': 0,
+		'react-hooks/exhaustive-deps': 'off',
 		'import/no-unresolved': [
 			'off',
 			{

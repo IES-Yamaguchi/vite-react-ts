@@ -7,8 +7,9 @@ import { Task } from './model/TodoProps';
 import Form from './components/Form';
 import { FilterButtonStatus } from './model/FilterButtonStatus';
 import FilterButton from './components/FilterButton';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
+import axios from 'axios';
 
 const buttonSts: FilterButtonStatus[] = [
 	{ name: 'all', isPressed: true },
@@ -23,7 +24,43 @@ const DATA: Task[] = [
 ];
 
 function App() {
+	const [init, setInit] = useState(false);
 	const [tasks, setTasks] = useState(DATA);
+
+	useEffect(() => {
+		axios.defaults.baseURL = 'http://localhost:8080/';
+		axios.defaults.headers.post['Content-Type'] = 'application/json';
+		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
+		const async: () => void = () => {
+			axios
+				.get('')
+				.then((resList) => {
+					if (resList.data.length > 0) {
+						resList.data.forEach((res: { id: string; name: string }) => {
+							if (
+								tasks.findIndex((task) => task.id === res.id.toString()) === -1
+							) {
+								const task: Task = {
+									id: res.id.toString(),
+									name: res.name,
+									completed: false
+								};
+								tasks.push(task);
+							}
+							console.log(tasks.findIndex((task) => task.id === res.id));
+						});
+						setTasks(tasks);
+						setInit(true);
+						console.log(tasks);
+					}
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		};
+		async();
+	}, []);
 
 	function toggleTaskCompleted(id: string) {
 		const updatedTasks = tasks.map((task) => {
@@ -75,20 +112,26 @@ function App() {
 	}
 
 	return (
-		<div className="todoapp stack-large">
-			<h1>TodoMatic</h1>
-			<Form addTask={addTask} />
-			<div className="filters btn-group stack-exception">
-				{filterButtonList}
-			</div>
-			<h2 id="list-heading">{headingText}</h2>
-			<ul
-				role="list"
-				className="todo-list stack-large stack-exception"
-				aria-labelledby="list-heading">
-				{taskList}
-			</ul>
-		</div>
+		<>
+			{init ? (
+				<div className="todoapp stack-large">
+					<h1>TodoMatic</h1>
+					<Form addTask={addTask} />
+					<div className="filters btn-group stack-exception">
+						{filterButtonList}
+					</div>
+					<h2 id="list-heading">{headingText}</h2>
+					<ul
+						role="list"
+						className="todo-list stack-large stack-exception"
+						aria-labelledby="list-heading">
+						{taskList}
+					</ul>
+				</div>
+			) : (
+				<div className="todoapp stack-large">loading</div>
+			)}
+		</>
 	);
 }
 
