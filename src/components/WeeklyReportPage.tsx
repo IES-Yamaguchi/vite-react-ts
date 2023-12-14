@@ -3,6 +3,7 @@ import SubmitButton from './Atoms/SubmitButton';
 import ResetButton from './Atoms/ResetButton';
 import WeeklyTable from './Block/WeeklyTable';
 import { createDays } from '../shared/Utils';
+import { CircularProgress } from '@mui/material';
 
 function WeeklyReportPage() {
 	function onSubmitData() {}
@@ -16,6 +17,7 @@ function WeeklyReportPage() {
 				<SubmitButton onSubmitData={onSubmitData} />
 				<ResetButton onResetData={onResetData} />
 				<WeeklyTable days={days}></WeeklyTable>
+				<CircularProgress></CircularProgress>
 			</div>
 		</>
 	);

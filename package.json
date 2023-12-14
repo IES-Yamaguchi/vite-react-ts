@@ -11,6 +11,9 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@emotion/react": "^11.11.1",
+		"@emotion/styled": "^11.11.0",
+		"@mui/material": "^5.15.0",
 		"@reduxjs/toolkit": "^2.0.1",
 		"axios": "^1.6.2",
 		"bootstrap": "^4.6.0",
@@ -34,7 +37,7 @@
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-react-refresh": "^0.4.4",
 		"typescript": "^5.2.2",
-		"vite": "^5.0.7",
+		"vite": "^5.0.8",
 		"vite-plugin-checker": "^0.6.2",
 		"vite-plugin-eslint": "^1.8.1",
 		"vite-tsconfig-paths": "^4.2.1"

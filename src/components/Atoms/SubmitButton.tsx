@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button'
+import { Button } from '@mui/material';
 
 interface SubmitButtonProps {
 	onSubmitData: () => void;
@@ -7,10 +7,7 @@ interface SubmitButtonProps {
 
 function SubmitButton({ onSubmitData }: SubmitButtonProps) {
 	return (
-		<Button
-			type="button"
-			className="btn toggle-btn"
-			onClick={() => onSubmitData()}>
+		<Button type="button" onClick={() => onSubmitData()}>
 			<span>データ登録</span>
 		</Button>
 	);
