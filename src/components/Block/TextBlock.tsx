@@ -31,14 +31,11 @@ function TextBlock(props: TextBlockProps) {
 	const textList = KeyValue.map(({ key, value }, index) => {
 		const disp = WeekInputEnum[key];
 		return (
-			<>
-				<div className="pad-8">
-					<InputForms id={index} label={disp} value={value} />
-				</div>
-			</>
+			<div key={index} className="pad-8">
+				<InputForms key={index} id={index} label={disp} value={value} />
+			</div>
 		);
 	});
-	console.log(textList);
 
 	return <>{textList}</>;
 }
