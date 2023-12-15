@@ -66,8 +66,10 @@ function DailyWork(props: DailyWorkProps) {
 
 	return (
 		<TableRow key={props.day.dayname}>
-			<TableCell>{date}</TableCell>
-			<TableCell>
+			<TableCell className="time-input">
+				<div className="center">{date}</div>
+			</TableCell>
+			<TableCell className="time-input">
 				<TextField
 					type="time"
 					inputProps={{ step: 900 }}
@@ -77,7 +79,7 @@ function DailyWork(props: DailyWorkProps) {
 					onChange={handleInputChange('dWork')}
 				/>
 			</TableCell>
-			<TableCell>
+			<TableCell className="time-input">
 				<TextField
 					type="time"
 					inputProps={{ step: 900 }}
@@ -87,7 +89,7 @@ function DailyWork(props: DailyWorkProps) {
 					onChange={handleInputChange('dOver')}
 				/>
 			</TableCell>
-			<TableCell>
+			<TableCell className="time-input">
 				<TextField
 					type="time"
 					inputProps={{ step: 900 }}
@@ -97,7 +99,7 @@ function DailyWork(props: DailyWorkProps) {
 					onChange={handleInputChange('dNight')}
 				/>
 			</TableCell>
-			<TableCell>
+			<TableCell className="time-input">
 				<TextField
 					type="time"
 					size="small"

@@ -15,6 +15,7 @@ export interface DayEntity extends DayData {
 }
 
 export interface WeekEntity extends DayData {
+	[key: string]: string | number;
 	compensatory: string;
 	problem: string;
 	announce: string;

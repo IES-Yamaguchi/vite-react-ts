@@ -1,22 +1,46 @@
 import React from 'react';
 import { WeekEntity } from '../../model/Entity';
+import InputForms from '../Atoms/InputForms';
+import { WeekInputEnum } from '../../model/Enum';
 
 interface TextBlockProps {
 	week: WeekEntity;
 }
+interface DisplayBlock {
+	[key: string]: string;
+	compensatory: string;
+	problem: string;
+	announce: string;
+	plan: string;
+	impression: string;
+}
 
 function TextBlock(props: TextBlockProps) {
-	const KeyValue = Object.keys(props.week).map((key) => {
-		const value = props.week[key];
+	const displayBlock: DisplayBlock = {
+		compensatory: props.week.compensatory,
+		problem: props.week.problem,
+		announce: props.week.announce,
+		plan: props.week.plan,
+		impression: props.week.impression
+	};
+
+	const KeyValue = Object.keys(displayBlock).map((key: string) => {
+		const value = displayBlock[key];
 		return { key, value };
 	});
-	const textList = KeyValue.map(({ key, value }) => {
-		return { value, key };
-		// return <inputForms key={keyvalue.key} data={keyvalue.value} />;
+	const textList = KeyValue.map(({ key, value }, index) => {
+		const disp = WeekInputEnum[key];
+		return (
+			<>
+				<div className="pad-8">
+					<InputForms id={index} label={disp} value={value} />
+				</div>
+			</>
+		);
 	});
 	console.log(textList);
 
-	return <></>;
+	return <>{textList}</>;
 }
 
 export default TextBlock;
