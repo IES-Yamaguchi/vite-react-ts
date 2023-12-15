@@ -1,5 +1,7 @@
 import { DayData, DayEntity } from '../model/Entity';
 
+export const daysOfWeek = ['日', '月', '火', '水', '木', '金', '土'];
+
 export function formatDateToNumber(date: Date) {
 	const year = date.getFullYear().toString();
 	const month = (date.getMonth() + 1).toString().padStart(2, '0'); // 月は0から始まるため+1する
@@ -84,4 +86,25 @@ export function createDays(date: Date) {
 		return createDay(currentDate, baseday);
 	});
 	return pastDaysList;
+}
+
+export function numToStringFormatter(time: number): string {
+	const integerPart = Math.floor(time); // 整数部分
+	const decimalPart = Math.round((time - integerPart) * 100); // 小数部分
+
+	const formattedHours = String(integerPart).padStart(2, '0');
+	const formattedMinutes = String(decimalPart).padStart(2, '0');
+	return `${formattedHours}:${formattedMinutes}`;
+}
+
+export function stringToTimeFormatter(time: string): {
+	hours: number;
+	minutes: number;
+} {
+	const [hours, minutes] = time.split(':').map(Number);
+	return { hours, minutes };
+}
+
+export function timeToNumFormatter(hours: number, minutes: number): number {
+	return hours + minutes / 100;
 }

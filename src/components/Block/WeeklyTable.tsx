@@ -1,6 +1,6 @@
 import React from 'react';
 import { DayEntity } from '../../model/Entity';
-import Table from 'react-bootstrap/Table';
+import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import DailyWork from '../Atoms/DailyWork';
 
 interface WeeklyTableProps {
@@ -14,15 +14,17 @@ function WeeklyTable(props: WeeklyTableProps) {
 
 	return (
 		<>
-			<Table hover striped bordered>
-				<thead>
-					<th>今週の勤務</th>
-					<th>時間内</th>
-					<th>時間外</th>
-					<th>深夜・休出</th>
-					<th>合計</th>
-				</thead>
-				<tbody>{dayList}</tbody>
+			<Table>
+				<TableHead>
+					<TableRow>
+						<TableCell>今週の勤務</TableCell>
+						<TableCell>時間内</TableCell>
+						<TableCell>時間外</TableCell>
+						<TableCell>深夜・休出</TableCell>
+						<TableCell>合計</TableCell>
+					</TableRow>
+				</TableHead>
+				<TableBody>{dayList}</TableBody>
 			</Table>
 		</>
 	);

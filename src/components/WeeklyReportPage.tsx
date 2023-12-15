@@ -12,7 +12,7 @@ function WeeklyReportPage() {
 
 	return (
 		<>
-			<div className="todoapp stack-large">
+			<div className="todoapp">
 				<h1>週報入力フォーム</h1>
 				<SubmitButton onSubmitData={onSubmitData} />
 				<ResetButton onResetData={onResetData} />
